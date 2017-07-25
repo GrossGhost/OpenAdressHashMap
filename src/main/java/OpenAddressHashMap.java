@@ -64,11 +64,11 @@ class OpenAddressHashMap {
                 i = 0;
             }
             if (keys[i] == FREE && n >= this.size) {
-                // if type of values been Long -> return null
+                // if type of values was Long -> return null
                 throw new RuntimeException("No such key!");
             }
             if (n > this.size) {
-                // if type of values been Long -> return null
+                // if type of values was Long -> return null
                 throw new RuntimeException("No such key!");
             }
             if (keys[i] == x) {
