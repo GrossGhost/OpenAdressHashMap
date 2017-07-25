@@ -1,4 +1,3 @@
-package main.java;
 
 import java.util.Arrays;
 
@@ -20,7 +19,7 @@ class OpenAddressHashMap {
         initializeArrays(this.size);
     }
 
-    private void initializeArrays(int size){
+    private void initializeArrays(int size) {
         this.keys = new int[size];
         this.values = new long[size];
         Arrays.fill(this.keys, FREE);
@@ -28,12 +27,12 @@ class OpenAddressHashMap {
 
     void put(int x, long y) {
         // if map is full - map size X 2
-        if (entry == this.size){
+        if (entry == this.size) {
 
             this.size = this.size * 2;
             int[] keysBuffer = Arrays.copyOf(this.keys, this.size);
 
-            for (int i = this.keys.length; i<keysBuffer.length; i++){
+            for (int i = this.keys.length; i < keysBuffer.length; i++) {
                 keysBuffer[i] = FREE;
             }
 
@@ -59,12 +58,16 @@ class OpenAddressHashMap {
 
     long get(int x) {
 
-        for (int i = index(hash(x)); ; i++) {
+        for (int i = index(hash(x)), n = 0; ; i++, n++) {
 
-            if (i == size) {
+            if (i == this.size) {
                 i = 0;
             }
-            if (keys[i] == FREE) {
+            if (keys[i] == FREE && n >= this.size) {
+                // if type of values been Long -> return null
+                throw new RuntimeException("No such key!");
+            }
+            if (n > this.size) {
                 // if type of values been Long -> return null
                 throw new RuntimeException("No such key!");
             }
@@ -77,10 +80,6 @@ class OpenAddressHashMap {
 
     int size() {
         return this.entry;
-    }
-
-    int[] getKeys(){
-        return this.keys;
     }
 
     private int hash(int x) {

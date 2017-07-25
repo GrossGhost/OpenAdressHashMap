@@ -1,31 +1,29 @@
-package main.java;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        OpenAddressHashMap openHashMap = new OpenAddressHashMap(15);
-        OpenAddressHashMap openHashMap1 = new OpenAddressHashMap();
+        OpenAddressHashMap map = new OpenAddressHashMap(5);
+        OpenAddressHashMap map1 = new OpenAddressHashMap();
 
-        openHashMap.put(10, 13);
-        openHashMap.put(18, 15);
-        openHashMap.put(17, 15);
-        openHashMap.put(19, 25);
+        map.put(10, 13);
+        map.put(18, 15);
+        map.put(17, 15);
+        map.put(19, 25);
+        map.put(29, 251);
 
-        System.out.println("map");
-        for (int i = 0; i<openHashMap.getKeys().length; i++){
-            System.out.println(openHashMap.getKeys()[i]);
-        }
+        map.put(39, 252);
+        map.put(49, 253);
 
-        openHashMap1.put(10, 13);
-        openHashMap1.put(18, 15);
-        openHashMap1.put(17, 15);
-        openHashMap1.put(19, 25);
+        System.out.println("map size = " + map.size());
+        System.out.println("key 29 = " + map.get(29));
 
-        System.out.println("map1");
-        for (int i = 0; i<openHashMap1.getKeys().length; i++){
-            System.out.println(openHashMap1.getKeys()[i]);
-        }
+        map1.put(10, 13);
+        map1.put(10, 15);
+        map1.put(10, 1);
+        map1.put(19, 25);
+
+        System.out.println("\nmap1 size = " + map1.size());
 
 
     }
